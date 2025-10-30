@@ -10,6 +10,15 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 24px;
 
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            // background-color: aqua;
+        }
+
+        li {
+            list-style: none;
+        }
+
         &--is-active {
             display: grid;
         }
@@ -22,12 +31,19 @@
 
             }
 
+
         }
     }
 
     &__tabs {
         display: flex;
         justify-content: center;
+
+        @media (max-width:768px) {
+            white-space: nowrap;
+            padding-left: 20px;
+            overflow-x: scroll;
+        }
 
         &__button {
             color: variaveis.$corTextoSecundario;
@@ -38,6 +54,10 @@
             text-transform: uppercase;
             cursor: pointer;
             margin: 0 1vw;
+
+            @media (max-width:768px) {
+                font-size: 16px
+            }
 
             &--is-active {
                 border-color: variaveis.$corTextoSecundario;

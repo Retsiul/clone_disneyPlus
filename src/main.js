@@ -1,8 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll(`[data-tab-button]`);
+    const questions = document.querySelectorAll(`[data-faq-question]`);
+
+    // ----------------------------------------------------------------------
+    const heroSection = document.querySelector('.hero');
+    const heightHero = heroSection.clientHeight;
+
+    window.addEventListener('scroll', function () {
+        const position = window.scrollY;
+        if (position < heightHero) {
+            visibityHeader()
+            // console.log('menor que a altura')
+        }
+        else {
+            invisibityHeader()
+            console.log('menor que a altura')
+        }
+    })
+
+    function visibityHeader() {
+        const header = document.querySelector('.header');
+        header.classList.add('header--is-hidden')
+
+    }
 
 
-    //    função principal
+    function invisibityHeader() {
+        const header = document.querySelector('.header');
+        header.classList.remove('header--is-hidden')
+
+    }
+
+    // ---------------------------------------------------------------------
+
+    //   progrmação abas
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function (botao) {
             const targetButton = botao.target.dataset.tabButton;
@@ -16,6 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         })
+    }
+
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].addEventListener('click', openOrClose)
     }
 })
 
@@ -40,4 +75,11 @@ function closedButtons() {
 
     }
 
+}
+
+// abre e fecha faq:
+function openOrClose(e) {
+    const addClass = "faq__questions__item--is-open";
+    const callBack = e.target.parentNode;
+    callBack.classList.toggle(addClass)
 }
